@@ -17,7 +17,6 @@ class Command(BaseCommand):
                 symbol = token_info.get('symbol', 'Unknown')
                 # Fetch current price or handle if the key is missing
                 current_price = token_info.get('current_price', 0.0)  # Default value if key is missing
-
                 # Save or update token in the database
                 Token.objects.update_or_create(
                     name=name,

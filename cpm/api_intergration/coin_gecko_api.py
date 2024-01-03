@@ -5,7 +5,7 @@ class CoinGeckoAPI:
 
     @classmethod
     def get_tokens(cls):
-        url = f'{cls.BASE_URL}/coins/list'
+        url = f'{cls.BASE_URL}/coins/markets?vs_currency=usd'
         try:
             response = requests.get(url)
             if response.status_code == 200:
