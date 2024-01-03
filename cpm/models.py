@@ -2,11 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Token(models.Model):
-    token_id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
-    symbol = models.CharField(max_length=20)
+    symbol = models.CharField(max_length=50)  # Adjust max_length as needed
     current_price = models.DecimalField(max_digits=20, decimal_places=10)
-    # Add more fields as needed
+    def __str__(self):
+        return self.name
+
+    # Other fields as needed
 
 class Portfolio(models.Model):
     portfolio_id = models.AutoField(primary_key=True)
@@ -18,11 +21,10 @@ class Portfolio(models.Model):
     # Add more fields as needed
 
 class PortfolioToken(models.Model):
-    portfolio_token_id = models.AutoField(primary_key=True)
-    portfolio = models.ForeignKey(Portfolio, on_delete=models.CASCADE)
+    id = models.AutoField(primary_key=True)  # Add this line to explicitly define 'id' as the primary key
     token = models.ForeignKey(Token, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=20, decimal_places=10)
-    created_at = models.DateTimeField(auto_now_add=True)
+
     # Add more fields as needed
 
 class UserProfile(models.Model):
