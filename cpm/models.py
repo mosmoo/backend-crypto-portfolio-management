@@ -5,7 +5,7 @@ class Token(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     symbol = models.CharField(max_length=50)  # Adjust max_length as needed
-    current_price = models.CharField(max_length=50)
+    current_price = models.DecimalField(max_digits=20, decimal_places=10)
 
     def __str__(self):
         return self.name
